@@ -8,7 +8,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "agent": "tsx agent/run.ts"
+    "agent": "tsx agent/run.ts",
+    "analyze": "tsx agent/analyze.ts"
   },
   "devDependencies": {
     "playwright": "^1.57.0",

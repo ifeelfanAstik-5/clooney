@@ -2,6 +2,8 @@ import { RenderedNode } from "./types";
 
 export const extractRenderedTree = async (page: any): Promise<RenderedNode> => {
   return await page.evaluate(`
+    console.log('ROOT RECT', document.body.getBoundingClientRect());
+
     (function () {
       function isUseful(el, rect, styles) {
         if (styles.display === "none") return false;
@@ -21,7 +23,7 @@ export const extractRenderedTree = async (page: any): Promise<RenderedNode> => {
         const rect = el.getBoundingClientRect();
         const styles = window.getComputedStyle(el);
 
-        if (!isUseful(el, rect, styles)) return null;
+        if (depth !== 0 && !isUseful(el, rect, styles)) return null;
 
         const children = [];
         for (let i = 0; i < el.children.length; i++) {
@@ -57,7 +59,9 @@ export const extractRenderedTree = async (page: any): Promise<RenderedNode> => {
         };
       }
 
-      return getNode(document.body, 0);
+      const root = document.querySelector('#asana_main_page') || document.querySelector('#asana_full_page') || document.querySelector('#asana') || document.body;
+
+      return getNode(root, 0);
     })()
   `);
 };
