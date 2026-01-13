@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["ES2020"],
+    "moduleResolution": "node",
+    "strict": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": false,
+    "sourceMap": false,
+    "noEmitHelpers": true,
+    "importHelpers": false,
+    "isolatedModules": true,
+    "removeComments": true,
+    "downlevelIteration": false,
+    "noImplicitAny": false
+  },
+  "include": ["agent/**/*.ts"],
+  "exclude": ["node_modules", "generated"]
+}
+
